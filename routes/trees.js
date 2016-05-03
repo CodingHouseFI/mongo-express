@@ -12,6 +12,9 @@ router.route('/')
   })
   .post((req, res) => {
     var tree = new Tree(req.body);
+
+    console.log('tree:', tree);
+
     tree.save((err, savedTree) => {
       res.status(err ? 400 : 200).send(err || savedTree);
     });
