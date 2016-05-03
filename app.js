@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-const MONGOURL = 'mongodb://localhost/mongo-express';
+const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost/mongo-express';
 
 mongoose.connect(MONGOURL, err => {
   console.log(err || `Connected to MongoDB at ${MONGOURL}`);
