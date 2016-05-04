@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script src="/js/main.js"></script>
+
+</head>
+<body ng-app='exampleApp' ng-controller='exampleCtrl'>
+
+  <div class="container" ng-show='editFormTree'>
+    <h1 class='text-center'>Edit Tree!</h1>
+      <form ng-submit='saveChanges()'>
+        <input type="number" ng-model='editFormTree.age'>
+        <input type="text" ng-model='editFormTree.species'>
+        <button type='button' class="btn btn-default" ng-click='cancelEdit()'>Cancel</button>
+        <button class='btn btn-success'>Save</button>
+      </form>
+  </div>
+
+  <div class="container" ng-hide='editFormTree'>
+    <h1 class='text-center'>Trees!</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Species</th>
+          <th>Age</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat='tree in trees track by $index'>
+          <td>{{tree.species}}</td>
+          <td>{{tree.age}}</td>
+          <td>
+            <button class="btn btn-sm" ng-click='edit(tree)'>Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</body>
+</html>
